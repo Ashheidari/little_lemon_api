@@ -1,0 +1,50 @@
+
+user1
+username = james3
+password = Jam@123!
+Email = james3@test.com
+
+user2
+username = Donald
+password = Don@123!
+Email = Donald@test.com
+
+user3
+username = Ron
+password = Ron@123!
+Email = Ron@test.com
+
+user4
+username = bill
+password = bill@123!
+Email = Bill@test.com
+
+user5
+username = Jack
+password = Jack@123!
+Email = Jack@test.com
+
+user6
+username = Sam
+password = Sam@123!
+Email = Sam@test.com
+
+user7
+username = Amir
+password = Amir@123!
+Email = Amir@littlelemon.com
+
+user8
+username = Omar
+password = Omar@123!
+Email = Omar@littlelemon.com
+
+user9
+username = Charles
+password = Charl@123!
+Email = Charles@littlelemon.com
+
+user10
+username = Michale
+password = Michale@123!
+Email = Mich@littlelemon.com
