@@ -48,3 +48,11 @@ user10
 username = Michale
 password = Michale@123!
 Email = Mich@littlelemon.com
+
+
+        username = request.data['username']
+        if username:
+            user = get_object_or_404(User,username = username)
+            managers = Group.objects.get(name = 'Managers')
+            managers.user_set.add(user)
+            return Response({"message":"ok"})
