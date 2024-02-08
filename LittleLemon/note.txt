@@ -1,13 +1,20 @@
 
+superuser
+username = admin
+password = admin123@A
+----------------------
+Customers
 user1
 username = james3
 password = Jam@123!
 Email = james3@test.com
 
+
 user2
 username = Donald
 password = Don@123!
 Email = Donald@test.com
+
 
 user3
 username = Ron
@@ -28,7 +35,8 @@ user6
 username = Sam
 password = Sam@123!
 Email = Sam@test.com
-
+----------------------------
+Delivery_Crewes
 user7
 username = Amir
 password = Amir@123!
@@ -38,7 +46,8 @@ user8
 username = Omar
 password = Omar@123!
 Email = Omar@littlelemon.com
-
+-------------------------------
+Managers
 user9
 username = Charles
 password = Charl@123!
@@ -48,11 +57,174 @@ user10
 username = Michale
 password = Michale@123!
 Email = Mich@littlelemon.com
+-----------------------------
+API routes 
+Auth endpoint
+
+curl --request POST \
+  --url http://127.0.0.1:8000/api/users/ \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"username":"Michale",
+	"email":"Michale@littlelemon.com",
+	"password":"Mich@123!"
+}'
+
+curl --request GET \
+  --url http://127.0.0.1:8000/api/users/me/ \
+  --header 'Authorization: Token 3cc0618e1eadd5d02ba5fdec8b003afde2e61803' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+curl --request POST \
+  --url http://127.0.0.1:8000/api/token/login/ \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"username":"Ron",
+	"email":"Ron@test.com",
+	"password":"Ron@123!"
+}'
+
+--------------------------------
+Menu Item endpoints
+curl --request POST \
+  --url http://127.0.0.1:8000/api/menu-items/ \
+  --header 'Authorization: Token 51261eddcba15f7a4337fa66f231f1554ff1261c' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"title":"Strawberry Cheesecake",
+	"price":"6.5",
+	"featured":"True",
+	"category_id":"2"
+}'
+
+curl --request DELETE \
+  --url http://127.0.0.1:8000/api/menu-items/10 \
+  --header 'Authorization: Token 51261eddcba15f7a4337fa66f231f1554ff1261c' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+  curl --request PATCH \
+  --url http://127.0.0.1:8000/api/menu-items/11 \
+  --header 'Authorization: Token 51261eddcba15f7a4337fa66f231f1554ff1261c' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+curl --request GET \
+  --url http://127.0.0.1:8000/api/menu-items \
+  --header 'Authorization: Token 2584cee3dda779be88e2f195059b459c7d3d9ea2' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+------------------------------------------
+Managers endpoint
+curl --request GET \
+  --url http://127.0.0.1:8000/api/groups/manager/users/ \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+curl --request POST \
+  --url http://127.0.0.1:8000/api/groups/manager/users/ \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	
+	"username":"Michale"
+
+}'
+
+curl --request DELETE \
+  --url http://127.0.0.1:8000/api/groups/manager/users/5 \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	
+	"username":"Michale"
+
+}'
+
+curl --request GET \
+  --url http://127.0.0.1:8000/api/groups/delivery-crew/users \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+  curl --request POST \
+  --url http://127.0.0.1:8000/api/groups/delivery-crew/users/ \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"username":"Amir"
+}'
+
+curl --request DELETE \
+  --url http://127.0.0.1:8000/api/groups/delivery-crew/users/8 \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"username":"Omar"
+}'
+------------------------------------------
+Cart endpoint
+curl --request GET \
+  --url http://127.0.0.1:8000/api/cart/menu-items/ \
+  --header 'Authorization: Token 20c9aa0c8d9d132daed4c3e25d406719a2e47d09' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+curl --request POST \
+  --url http://127.0.0.1:8000/api/cart/menu-items/ \
+  --header 'Authorization: Token 20c9aa0c8d9d132daed4c3e25d406719a2e47d09' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"menu-item-id":"4"
+}'
+
+curl --request DELETE \
+  --url http://127.0.0.1:8000/api/cart/menu-items/ \
+  --header 'Authorization: Token 20c9aa0c8d9d132daed4c3e25d406719a2e47d09' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"menu-item-id":"4"
+}'
+----------------------------------------------
+Order endpoint
+
+curl --request POST \
+  --url http://127.0.0.1:8000/api/orders/ \
+  --header 'Authorization: Token 20c9aa0c8d9d132daed4c3e25d406719a2e47d09' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
 
 
-        username = request.data['username']
-        if username:
-            user = get_object_or_404(User,username = username)
-            managers = Group.objects.get(name = 'Managers')
-            managers.user_set.add(user)
-            return Response({"message":"ok"})
+curl --request GET \
+  --url http://127.0.0.1:8000/api/orders/ \
+  --header 'Authorization: Token 20c9aa0c8d9d132daed4c3e25d406719a2e47d09' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+
+curl --request GET \
+  --url http://127.0.0.1:8000/api/orders/1 \
+  --header 'Authorization: Token 20c9aa0c8d9d132daed4c3e25d406719a2e47d09' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0'
+
+
+curl --request PUT \
+  --url http://127.0.0.1:8000/api/orders/1 \
+  --header 'Authorization: Token 5485fc268fa989672108c445a694f9e373acb081' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.0' \
+  --data '{
+	"status":"1",
+	"delivery_crew":"8"
+}'
+
